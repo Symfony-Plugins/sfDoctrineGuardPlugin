@@ -2,7 +2,7 @@
 
 /**
  * Base actions for the sfGuardForgotPasswordPlugin sfGuardForgotPassword module.
- * 
+ *
  * @package     sfGuardForgotPasswordPlugin
  * @subpackage  sfGuardForgotPassword
  * @author      Your name here
@@ -39,7 +39,7 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
         $message = Swift_Message::newInstance()
           ->setFrom(sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'))
           ->setTo($this->form->user->email_address)
-          ->setSubject('Forgot Password Request for '.$this->form->user->username)
+          ->setSubject($this->getContext()->getI18N()->__('Forgot Password Request for %name%', array('%name%' => $this->form->user->username), 'sf_guard'))
           ->setBody($this->getPartial('sfGuardForgotPassword/send_request', array('user' => $this->form->user, 'forgot_password' => $forgotPassword)))
           ->setContentType('text/html')
         ;
@@ -47,7 +47,7 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
         $this->getMailer()->send($message);
 
         $this->getUser()->setFlash('notice', 'Check your e-mail! You should receive something shortly!');
-        $this->redirect('@sf_guard_signin');
+        $this->redirect(sfConfig::get('app_sf_guard_plugin_password_request_url', '@sf_guard_signin'));
       } else {
         $this->getUser()->setFlash('error', 'Invalid e-mail address!');
       }
@@ -72,7 +72,7 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
         $message = Swift_Message::newInstance()
           ->setFrom(sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'))
           ->setTo($this->user->email_address)
-          ->setSubject('New Password for '.$this->user->username)
+          ->setSubject($this->getContext()->getI18N()->__('New Password for %name%', array('%name%' => $this->user->username) , 'sf_guard'))
           ->setBody($this->getPartial('sfGuardForgotPassword/new_password', array('user' => $this->user, 'password' => $request['sf_guard_user']['password'])))
         ;
 
