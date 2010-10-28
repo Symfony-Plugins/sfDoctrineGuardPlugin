@@ -24,32 +24,34 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
 
     if ($request->isMethod('post'))
     {
+      $i18n = $this->getContext()->getI18N();
+
       $this->form->bind($request->getParameter($this->form->getName()));
       if ($this->form->isValid())
       {
-        $this->user = $this->form->user;
+        $this->user = Doctrine_Core::getTable('sfGuardUser')
+          ->retrieveByUsernameOrEmailAddress($this->form->getValue('email_address'));
         $this->_deleteOldUserForgotPasswordRecords();
 
         $forgotPassword = new sfGuardForgotPassword();
-        $forgotPassword->user_id = $this->form->user->id;
+        $forgotPassword->user_id = $this->user->id;
         $forgotPassword->unique_key = md5(rand() + time());
         $forgotPassword->expires_at = new Doctrine_Expression('NOW()');
         $forgotPassword->save();
 
-        $message = Swift_Message::newInstance()
-          ->setFrom(sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'))
-          ->setTo($this->form->user->email_address)
-          ->setSubject($this->getContext()->getI18N()->__('Forgot Password Request for %name%', array('%name%' => $this->form->user->username), 'sf_guard'))
-          ->setBody($this->getPartial('sfGuardForgotPassword/send_request', array('user' => $this->form->user, 'forgot_password' => $forgotPassword)))
-          ->setContentType('text/html')
-        ;
-
+        $message = $this->getMailer()->compose(
+          sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'),
+          $this->user->email_address,
+          $i18n->__('Forgot Password Request for %name%', array('%name%' => $this->user->username), 'sf_guard'),
+          $this->getPartial('sfGuardForgotPassword/send_request', array('user' => $this->user, 'forgot_password' => $forgotPassword))
+        )->setContentType('text/html');
         $this->getMailer()->send($message);
 
-        $this->getUser()->setFlash('notice', 'Check your e-mail! You should receive something shortly!');
+        $this->getUser()->setFlash('notice', $i18n->__('Check your e-mail! You should receive something shortly!'));
+
         $this->redirect(sfConfig::get('app_sf_guard_plugin_password_request_url', '@sf_guard_signin'));
       } else {
-        $this->getUser()->setFlash('error', 'Invalid e-mail address!');
+        $this->getUser()->setFlash('error', $i18n->__('Invalid e-mail address!'));
       }
     }
   }
@@ -69,16 +71,18 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
 
         $this->_deleteOldUserForgotPasswordRecords();
 
-        $message = Swift_Message::newInstance()
-          ->setFrom(sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'))
-          ->setTo($this->user->email_address)
-          ->setSubject($this->getContext()->getI18N()->__('New Password for %name%', array('%name%' => $this->user->username) , 'sf_guard'))
-          ->setBody($this->getPartial('sfGuardForgotPassword/new_password', array('user' => $this->user, 'password' => $request['sf_guard_user']['password'])))
-        ;
+        $i18n = $this->getContext()->getI18N();
 
+        $message = $this->getMailer()->compose(
+          sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'),
+          $this->user->email_address,
+          $i18n->__('New Password for %name%', array('%name%' => $this->user->username) , 'sf_guard'),
+          $this->getPartial('sfGuardForgotPassword/new_password', array('user' => $this->user, 'password' => $request['sf_guard_user']['password']))
+        )->setContentType('text/html');
         $this->getMailer()->send($message);
 
-        $this->getUser()->setFlash('notice', 'Password updated successfully!');
+        $this->getUser()->setFlash('notice', $i18n->__('Password updated successfully!'));
+
         $this->redirect('@sf_guard_signin');
       }
     }
