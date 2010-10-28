@@ -13,7 +13,7 @@ abstract class PluginsfGuardGroupForm extends BasesfGuardGroupForm
   /**
    * @see sfForm
    */
-  public function setupInheritance()
+  protected function setupInheritance()
   {
     parent::setupInheritance();
 

@@ -13,7 +13,7 @@ abstract class PluginsfGuardPermissionForm extends BasesfGuardPermissionForm
   /**
    * @see sfForm
    */
-  public function setupInheritance()
+  protected function setupInheritance()
   {
     parent::setupInheritance();
 
