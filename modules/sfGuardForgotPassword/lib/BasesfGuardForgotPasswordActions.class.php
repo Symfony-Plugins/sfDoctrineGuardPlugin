@@ -29,7 +29,9 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
       {
         $this->user = Doctrine_Core::getTable('sfGuardUser')
           ->retrieveByUsernameOrEmailAddress($this->form->getValue('email_address'));
-        $this->_deleteOldUserForgotPasswordRecords();
+
+        Doctrine_Core::getTable('sfGuardForgotPassword')
+          ->deleteByUser($this->user);
 
         $forgotPassword = new sfGuardForgotPassword();
         $forgotPassword->user_id = $this->user->id;
@@ -112,14 +114,5 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
       $this->getPartial('sfGuardForgotPassword/new_password', array('user' => $user, 'password' => $password))
     )->setContentType('text/html');
     $this->getMailer()->send($message);
-  }
-
-  private function _deleteOldUserForgotPasswordRecords()
-  {
-    Doctrine_Core::getTable('sfGuardForgotPassword')
-      ->createQuery('p')
-      ->delete()
-      ->where('p.user_id = ?', $this->user->id)
-      ->execute();
   }
 }
