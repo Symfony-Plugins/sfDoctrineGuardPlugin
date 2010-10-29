@@ -83,14 +83,13 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
       {
         $this->form->save();
 
-        Doctrine_Core::getTable('sfGuardForgotPassword')
-          ->deleteByUser($this->user);
+        $this->forgotPassword->delete();
 
         $this->sendChangeMail($this->user, $request['sf_guard_user']['password']);
 
         $this->getUser()->setFlash('notice', 'Password updated successfully!');
 
-        $this->redirect('@sf_guard_signin');
+        $this->redirect(sfConfig::get('app_sf_guard_plugin_password_change_url', '@sf_guard_signin'));
       }
     }
   }
