@@ -30,7 +30,7 @@ class BasesfGuardAuthActions extends sfActions
 
     if ($request->isMethod('post'))
     {
-      $this->form->bind($request->getParameter('signin'));
+      $this->form->bind($request->getParameter($this->form->getName()));
       if ($this->form->isValid())
       {
         $values = $this->form->getValues(); 
@@ -80,10 +80,5 @@ class BasesfGuardAuthActions extends sfActions
   public function executeSecure($request)
   {
     $this->getResponse()->setStatusCode(403);
-  }
-
-  public function executePassword($request)
-  {
-    throw new sfException('This method is not yet implemented.');
   }
 }
