@@ -44,8 +44,6 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
         $this->getUser()->setFlash('notice', 'Check your e-mail! You should receive something shortly!');
 
         $this->redirect(sfConfig::get('app_sf_guard_plugin_password_request_url', '@sf_guard_signin'));
-      } else {
-        $this->getUser()->setFlash('error', 'Invalid e-mail address!');
       }
     }
   }

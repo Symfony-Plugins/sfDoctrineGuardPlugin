@@ -1,3 +1,11 @@
+<?php
+/**
+ * E-mail template used when password was changed
+ *
+ * @param sfGuardUser $user     the sfGuardUser object
+ * @param string      $password plain password
+ */
+?>
 <?php use_helper('I18N') ?>
 <?php echo __('Hi %first_name%', array('%first_name%' => $user->getFirstName()), 'sf_guard') ?>,
 
