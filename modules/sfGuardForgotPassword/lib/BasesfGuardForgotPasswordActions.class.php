@@ -56,7 +56,7 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
    *
    * @return void
    */
-  public function sendRequestMail($user, $forgotPassword)
+  protected function sendRequestMail($user, $forgotPassword)
   {
     $i18n = $this->getContext()->getI18N();
 
