@@ -6,7 +6,7 @@
  * @package     sfGuardForgotPasswordPlugin
  * @subpackage  sfGuardForgotPassword
  * @author      Your name here
- * @version     SVN: $Id: BaseActions.class.php 12534 2008-11-01 13:38:27Z Kris.Wallsmith $
+ * @version     SVN: $Id$
  */
 abstract class BasesfGuardForgotPasswordActions extends sfActions
 {
@@ -68,6 +68,7 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
       $i18n->__('Forgot Password Request for %name%', array('%name%' => $this->user->username), 'sf_guard'),
       $this->getPartial('sfGuardForgotPassword/send_request', array('user' => $this->user, 'forgot_password' => $forgotPassword))
     )->setContentType('text/html');
+
     $this->getMailer()->send($message);
   }
 
@@ -113,6 +114,7 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
       $i18n->__('New Password for %name%', array('%name%' => $user->username) , 'sf_guard'),
       $this->getPartial('sfGuardForgotPassword/new_password', array('user' => $user, 'password' => $password))
     )->setContentType('text/html');
+
     $this->getMailer()->send($message);
   }
 }
