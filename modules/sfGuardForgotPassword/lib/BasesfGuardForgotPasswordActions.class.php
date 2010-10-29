@@ -64,9 +64,9 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
 
     $message = $this->getMailer()->compose(
       sfConfig::get('app_sf_guard_plugin_default_from_email', 'from@noreply.com'),
-      $this->user->email_address,
-      $i18n->__('Forgot Password Request for %name%', array('%name%' => $this->user->username), 'sf_guard'),
-      $this->getPartial('sfGuardForgotPassword/send_request', array('user' => $this->user, 'forgot_password' => $forgotPassword))
+      $user->email_address,
+      $i18n->__('Forgot Password Request for %name%', array('%name%' => $user->username), 'sf_guard'),
+      $this->getPartial('sfGuardForgotPassword/send_request', array('user' => $user, 'forgot_password' => $forgotPassword))
     )->setContentType('text/html');
 
     $this->getMailer()->send($message);
