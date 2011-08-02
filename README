@@ -254,9 +254,9 @@ These modules are auto-generated thanks to the symfony admin generator.
 
   * Remember to secure these modules via `security.yml` if you are not securing your entire site. Otherwise anonymous users can create and delete users
 
-  * Access the modules with the default route:
+  * Access the modules with the default route `sf_guard_user`:
 
-    http://www.example.com/backend.php/sfGuardUser
+    http://www.example.com/backend.php/guard/users
 
 ## Applying for Accounts ##
 
