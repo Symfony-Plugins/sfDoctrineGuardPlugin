@@ -23,8 +23,8 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Initializes the sfGuardSecurityUser object.
    *
    * @param sfEventDispatcher $dispatcher The event dispatcher object
-   * @param sfStorage $storage The session storage object
-   * @param array $options An array of options
+   * @param sfStorage         $storage    The session storage object
+   * @param array             $options    An array of options
    */
   public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
   {
@@ -42,6 +42,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Returns the referer uri.
    *
    * @param string $default The default uri to return
+   *
    * @return string $referer The referer
    */
   public function getReferer($default)
@@ -68,8 +69,9 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   /**
    * Returns whether or not the user has the given credential.
    *
-   * @param string $credential The credential name
-   * @param boolean $useAnd Whether or not to use an AND condition
+   * @param string  $credential The credential name
+   * @param boolean $useAnd     Whether or not to use an AND condition
+   *
    * @return boolean
    */
   public function hasCredential($credential, $useAnd = true)
@@ -115,9 +117,9 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   /**
    * Signs in the user on the application.
    *
-   * @param sfGuardUser $user The sfGuardUser id
-   * @param boolean $remember Whether or not to remember the user
-   * @param Doctrine_Connection $con A Doctrine_Connection object
+   * @param sfGuardUser         $user     The sfGuardUser id
+   * @param boolean             $remember Whether or not to remember the user
+   * @param Doctrine_Connection $con      A Doctrine_Connection object
    */
   public function signIn($user, $remember = false, $con = null)
   {
@@ -168,6 +170,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Returns a random generated key.
    *
    * @param int $len The key length
+   *
    * @return string
    */
   protected function generateRandomKey($len = 20)
@@ -250,14 +253,14 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    */
   public function getEmail()
   {
-    return $this->getGuardUser()->getEmail();
+    return $this->getGuardUser()->getEmailAddress();
   }
 
   /**
    * Sets the user's password.
    *
-   * @param string $password The password
-   * @param Doctrine_Collection $con A Doctrine_Connection object
+   * @param string              $password The password
+   * @param Doctrine_Collection $con      A Doctrine_Connection object
    */
   public function setPassword($password, $con = null)
   {
@@ -279,6 +282,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Returns whether or not the user belongs to the given group.
    *
    * @param string $name The group name
+   * 
    * @return boolean
    */
   public function hasGroup($name)
@@ -310,6 +314,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Returns whether or not the user has the given permission.
    *
    * @param string $name The permission name
+   * 
    * @return string
    */
   public function hasPermission($name)
@@ -370,8 +375,8 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   /**
    * Adds a group from its name to the current user.
    *
-   * @param string $name The group name
-   * @param Doctrine_Connection $con A Doctrine_Connection object
+   * @param string              $name The group name
+   * @param Doctrine_Connection $con  A Doctrine_Connection object
    */
   public function addGroupByName($name, $con = null)
   {
@@ -381,8 +386,8 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   /**
    * Adds a permission from its name to the current user.
    *
-   * @param string $name The permission name
-   * @param Doctrine_Connection $con A Doctrine_Connection object
+   * @param string              $name The permission name
+   * @param Doctrine_Connection $con  A Doctrine_Connection object
    */
   public function addPermissionByName($name, $con = null)
   {
