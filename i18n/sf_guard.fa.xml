@@ -13,20 +13,12 @@
         <target>کلمه عبور</target>
       </trans-unit>
       <trans-unit>
-        <source>Remember</source>
-        <target>مرا بخاطر بسپار</target>
-      </trans-unit>
-      <trans-unit>
         <source>Signin</source>
         <target>ورود</target>
       </trans-unit>
       <trans-unit>
         <source>Forgot your password?</source>
         <target>کلمه عبور خود را فراموش کرده اید؟</target>
-      </trans-unit>
-      <trans-unit>
-        <source>You don't have the required permission to access this page.</source>
-        <target>شما صطح کاربری مورد نیاز برای دسترسی این صفحه را ندارید</target>
       </trans-unit>
     </body>
   </file>

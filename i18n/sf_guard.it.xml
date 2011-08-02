@@ -13,20 +13,12 @@
         <target>Password</target>
       </trans-unit>
       <trans-unit>
-        <source>Remember</source>
-        <target>Ricordami</target>
-      </trans-unit>
-      <trans-unit>
         <source>Signin</source>
         <target>Entra</target>
       </trans-unit>
       <trans-unit>
         <source>Forgot your password?</source>
         <target>Hai dimenticato la password?</target>
-      </trans-unit>
-      <trans-unit>
-        <source>You don't have the required permission to access this page.</source>
-        <target>Non hai i permessi necessari per accedere a questa pagina.</target>
       </trans-unit>
     </body>
   </file>

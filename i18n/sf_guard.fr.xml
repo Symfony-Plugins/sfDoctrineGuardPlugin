@@ -21,10 +21,6 @@
         <target>Répétez votre mot de passe</target>
       </trans-unit>
       <trans-unit>
-        <source>Remember</source>
-        <target>Se rappeler</target>
-      </trans-unit>
-      <trans-unit>
         <source>Register</source>
         <target>Créer un compte</target>
       </trans-unit>
@@ -39,10 +35,6 @@
       <trans-unit>
         <source>Want to register?</source>
         <target>Créer un compte?</target>
-      </trans-unit>
-      <trans-unit>
-        <source>You don't have the required permission to access this page.</source>
-        <target>Vous n'avez pas les permissions nécessaires pour accéder à cette page.</target>
       </trans-unit>
       <trans-unit>
         <source>Login below to gain access</source>
@@ -67,10 +59,6 @@
       <trans-unit>
         <source>Click to change password</source>
         <target>Cliquez pour modifier votre mot de passe</target>
-      </trans-unit>
-      <trans-unit>
-        <source>Below you will your username and new password:</source>
-        <target>Veuillez trouver ci dessous votre identifiant ainsi que votre nouveau mot de passe:</target>
       </trans-unit>
       <trans-unit>
         <source>Below you will find your username and new password:</source>

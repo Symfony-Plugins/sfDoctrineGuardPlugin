@@ -21,10 +21,6 @@
         <target>Повторите пароль</target>
       </trans-unit>
       <trans-unit>
-        <source>Remember</source>
-        <target>Запомнить меня</target>
-      </trans-unit>
-      <trans-unit>
         <source>Register</source>
         <target>Зарегистрироваться</target>
       </trans-unit>
@@ -39,10 +35,6 @@
       <trans-unit>
         <source>Want to register?</source>
         <target>Хотите зарегистрироваться?</target>
-      </trans-unit>
-      <trans-unit>
-        <source>You don't have the required permission to access this page.</source>
-        <target>У вас недостаточно привилегий для доступа к этой странице.</target>
       </trans-unit>
       <trans-unit>
         <source>Login below to gain access</source>
@@ -67,10 +59,6 @@
       <trans-unit>
         <source>Click to change password</source>
         <target>Нажмите здесь, чтобы сменить пароль.</target>
-      </trans-unit>
-      <trans-unit>
-        <source>Below you will your username and new password:</source>
-        <target>Ниже вы найдете ваше имя пользователя и новый пароль:</target>
       </trans-unit>
       <trans-unit>
         <source>Below you will find your username and new password:</source>
