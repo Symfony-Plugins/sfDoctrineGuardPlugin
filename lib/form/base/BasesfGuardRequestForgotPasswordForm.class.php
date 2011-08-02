@@ -19,5 +19,7 @@ class BasesfGuardRequestForgotPasswordForm extends BaseForm
     );
 
     $this->widgetSchema->setNameFormat('forgot_password[%s]');
+
+    parent::setup();
   }
 }

@@ -36,5 +36,7 @@ class BasesfGuardFormSignin extends BaseForm
     $this->validatorSchema->setPostValidator(new sfGuardValidatorUser());
 
     $this->widgetSchema->setNameFormat('signin[%s]');
+
+    parent::setup();
   }
 }
