@@ -96,6 +96,14 @@
         <source>New Password for %name%</source>
         <target>Новый пароль для пользователя %name%</target>
       </trans-unit>
+      <trans-unit>
+        <source>The username and/or password is invalid.</source>
+        <target>Имя и/или пароль указаны неверно</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Remember</source>
+        <target>Запомнить</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
