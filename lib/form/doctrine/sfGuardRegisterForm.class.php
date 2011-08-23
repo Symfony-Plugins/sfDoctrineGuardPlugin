@@ -15,5 +15,6 @@ class sfGuardRegisterForm extends BasesfGuardRegisterForm
    */
   public function configure()
   {
+  	$this->widgetSchema->getFormFormatter()->setTranslationCatalogue('sf_guard');
   }
 }
