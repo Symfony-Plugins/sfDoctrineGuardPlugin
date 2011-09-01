@@ -20,7 +20,8 @@ abstract class BasesfGuardForgotPasswordActions extends sfActions
 
   public function executeIndex($request)
   {
-    $this->form = new sfGuardRequestForgotPasswordForm();
+    $class = sfConfig::get('app_sf_guard_plugin_request_forgot_password_form', 'sfGuardRequestForgotPasswordForm');
+    $this->form = new $class();
 
     if ($request->isMethod('post'))
     {
