@@ -123,15 +123,15 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    */
   public function signIn($user, $remember = false, $con = null)
   {
+    // save last login
+    $user->setLastLogin(date('Y-m-d H:i:s'));
+    $user->save($con);
+
     // signin
     $this->setAttribute('user_id', $user->getId(), 'sfGuardSecurityUser');
     $this->setAuthenticated(true);
     $this->clearCredentials();
     $this->addCredentials($user->getAllPermissionNames());
-
-    // save last login
-    $user->setLastLogin(date('Y-m-d H:i:s'));
-    $user->save($con);
 
     // remember?
     if ($remember)
