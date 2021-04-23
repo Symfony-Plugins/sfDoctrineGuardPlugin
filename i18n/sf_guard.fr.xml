@@ -96,6 +96,14 @@
         <source>New Password for %name%</source>
         <target>Nouveau mot de passe pour %name%</target>
       </trans-unit>
+      <trans-unit>
+        <source>The username and/or password is invalid.</source>
+        <target>L'identifiant et/ou le mot de passe est invalide.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Remember</source>
+        <target>Se souvenir</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
